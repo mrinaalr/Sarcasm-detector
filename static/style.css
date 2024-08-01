@@ -1,0 +1,99 @@
+ body {
+    background: #f5f7fa; /* Light grey background */
+    color: #333; /* Dark grey text */
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+h1, h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    margin-bottom: 15px; /* Adds space below the text box */
+}
+
+select {
+    width: 150px; /* Properly sized dropdown */
+    height: 40px; /* Custom height for the dropdown */
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+.video-wrapper {
+    margin-top: 20px;
+}
+
+.inspiration {
+    margin-top: 20px;
+}
+
+.inspiration p {
+    margin-bottom: 15px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Space between the boxes */
+    gap: 20px; /* Space between the boxes */
+    max-width: 1200px; /* Control max width of the container */
+    margin: auto; /* Center the container */
+    padding: 20px 0; /* Top and bottom padding */
+}
+
+.flex-container > div {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.flex-container .next-steps,
+.flex-container .tools {
+    max-width: 580px;
+}
+
+.next-steps p {
+    margin-bottom: 20px; /* Space between the text and the box end */
+}

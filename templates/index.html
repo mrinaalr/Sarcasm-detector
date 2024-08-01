@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarcasm Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background: #f5f7fa;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .main-content, .example-content {
+            padding: 20px;
+        }
+        .main-content {
+            flex: 3;
+            border-right: 1px solid #ddd;
+        }
+        .example-content {
+            flex: 1;
+            padding-left: 20px;
+        }
+        .video-wrapper {
+            margin: 20px auto;
+            text-align: center;
+        }
+        .inspiration {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .inspiration p {
+            margin-bottom: 15px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px 0 0 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        select {
+            width: 200px;
+            padding: 10px;
+            border-radius: 0 5px 5px 0;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        #result {
+            text-align: center;
+        }
+        footer {
+            margin-top: 30px;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            text-align: center;
+        }
+        .examples {
+            list-style: none;
+            padding-left: 0;
+        }
+        .examples h3 {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .examples li {
+            margin-bottom: 10px;
+        }
+        .tools {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .tools h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <h1>Sarcasm Detector</h1>
+            <form id="sarcasmForm">
+                <div class="input-group">
+                    <input type="text" id="text" name="text" placeholder="Enter a statement" required>
+	<select id="predefined">
+    <option value="">Select a statement</option>
+    <!-- Sarcastic Statements -->
+    <option value="Should I use my invisibility to fight crime or for evil?">Should I use my invisibility to fight crime or for evil?</option>
+    <option value="Yeah, because that's never happened before.">Yeah, because that's never happened before.</option>
+    <option value="Do I have to hold up a sarcasm sign every time I open my mouth?">Do I have to hold up a sarcasm sign every time I open my mouth?</option>
+    <option value="No, really, take your time. It's not like I'm in a hurry or anything.">No, really, take your time. It's not like I'm in a hurry or anything.</option>
+    <option value="Oh, sure, because I have nothing better to do.">Oh, sure, because I have nothing better to do.</option>
+
+    <!-- Pure Statements -->
+    <option value="The presentation is scheduled for 2 PM.">The presentation is scheduled for 2 PM.</option>
+    <option value="I'll be there in five minutes.">I'll be there in five minutes.</option>
+
+    <!-- 50/50 Context-Dependent Statements -->
+    <option value="That's just what I needed today.">That's just what I needed today.</option>
+    <option value="I'm sure that will work out perfectly.">I'm sure that will work out perfectly.</option>
+</select>
+
+
+		</div>
+                <button type="submit">Check for Sarcasm</button>
+            </form>
+            <div id="result">
+                <h2>Result:</h2>
+                <p id="message"></p>
+            </div>
+            <h2>Inspiration behind this project</h2>
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/SPmxsRDSmTc?start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="inspiration">
+                <p>Sarcasm is often called the lowest form of wit but the highest form of intelligence. I started this project initially because of the obvious challenge of detecting sarcasm in text (though I should expand it to audio in the future as that would be fascinating), as the machine would need to realize that the statement is meant to be humorous or ironical, despite the literal words.</p>
+                <p>Understanding sarcasm, context, and facial cues / expressions within conversations is what allows us to have complex conversations and it would be cool to have robots that are not only functionally intelligent but also understand the complexity of human interaction.</p>
+            </div>
+        </div>
+        <div class="example-content">
+            <h2>Example Statements</h2>
+            <div class="examples">
+                <h3>Sarcastic Statements</h3>
+                <ul>
+                    <li>"Oh great, another Monday."</li>
+                    <li>"I just love waiting in long lines."</li>
+                    <li>"As if I don't have anything better to do."</li>
+                    <li>"Nice job, Einstein."</li>
+                    <li>"I'm not arguing, I'm just explaining why I'm right."</li>
+                </ul>
+                <h3>Regular Statements</h3>
+                <ul>
+                    <li>"I enjoy going for a walk in the park."</li>
+                    <li>"The weather is nice today."</li>
+                    <li>"The new coffee shop has a nice atmosphere."</li>
+                    <li>"She did a fantastic job on her presentation."</li>
+                    <li>"I am looking forward to the weekend."</li>
+                </ul>
+            <h3>Rock and a Hard Place </h3>
+                <ul>
+		    <li>"Your sarcasm detector is so cool." </li>
+                    <li>"I’m sure the project will be completed on time."</li>
+                    <li>"It’s wonderful to see the team so motivated."</li>
+                    <li>"Well, that’s just perfect."</li>
+                    <li>"I’m so glad you could join us."</li>
+                    <li>"I’m sure everything will turn out just fine."</li>
+                </ul>
+            </div>
+        </div>
+    </div>i
+    <div class="flex-container">
+    <div class="next-steps">
+<h2>"I am not impressed by your performance" - GSP - Mrinaal</h2>
+<p>
+  The sarcasm detection model demonstrates robust performance across various datasets:
+</p>
+<ul>
+  <li>
+    It achieved an exceptional <b>F1 score of 0.99</b> on a dataset specifically curated with 1500 sarcastic comments from movies / tv shows and common daily usage, indicating high accuracy and precision in identifying sarcasm in this context.
+  </li>
+  <li>
+    On a broader dataset, consisting of a random sample of 50,000 sarcastic comments from a pool of reddit / twitter comments (without context) , the model maintained a strong <b>F1 score of 0.81</b>, showcasing its generalizability.
+  </li>
+  <li>
+    Additionally, when tested on sarcastic news comments—data not used during training—the model achieved an <b>F1 score of 0.84</b>, highlighting its ability to effectively generalize to different types of sarcastic content.
+  </li>
+</ul>
+<p>
+  These results underscore the model's effectiveness and versatility in detecting sarcasm across diverse sources.
+</p>
+
+
+
+ 
+<h2>Next Steps and Bigger and Better Things</h2>
+<p>Currently, my detector works to find sarcasm within individual statements. That's greeeaaat (please see what I'm doing here). The next step is to be able to detect sarcasm within conversations, especially in cases that require nuance. This will involve analyzing the context provided by multiple statements and understanding the flow of dialogue to accurately interpret sarcasm. By incorporating conversation history and identifying changes in tone or sentiment, the detector can become more sophisticated and handle more complex interactions. This advancement will not only improve the accuracy of sarcasm detection but also enable the application to be used in more diverse scenarios, such as customer service, social media analysis, and even virtual assistants. I can't wait for our Skynet overlords to get here.</p>
+ 
+</div>
+    
+    <div class="tools">
+        <h2>Tools and Technologies Used</h2>
+        <p>The Sarcasm Detector project uses a variety of technologies, mostly to gain hands-on experience with both front-end and back-end logic. The core of the project is built in <strong>Python</strong>, with key libraries including <strong>Transformers</strong>, <strong>pandas</strong>, <strong>Flask</strong>, and some JavaScript libraries.</p>
+        <p>Going into detail, I used the <strong>distilroberta-base model</strong> (I tuned on my MacBook Air, so I had to use the distil version because the full model would have required too much computational power) and trained it with a blend of sarcastic comments from Reddit, comments I generated myself, and other datasets I could find online.</p>
+        <p>The data was preprocessed using <strong>pandas</strong>, then tokenized and trained using the <strong>Hugging Face Transformers library</strong>, specifically leveraging <strong>PyTorch</strong> for model training and inference. The training process involved over <strong>100,000 data points</strong> and took roughly <strong>32 hours</strong> of training.</p>
+        <p>Finally, I got tired of continuously inputting statements in my terminal, so I decided to create a simple website using <strong>HTML</strong>. I utilized <strong>jQuery</strong> and <strong>AJAX</strong> to make the experience as seamless as possible (without falling to the level of being a full-time web developer, the horror). To manage the server-side logic and handle user requests, I used <strong>Flask</strong>.</p>
+
+
+<div style="text-align: center; margin-top: 20px;">
+    <div style="width: 62%; margin-left: -10%; position: relative; padding-bottom: 68%;">
+        <iframe src="https://giphy.com/embed/jrnKKUCVeT0k87nTEM" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    </div>
+</div>
+
+	
+</div>
+
+<script>
+    $(document).ready(function() {
+        // When an option is selected from the dropdown
+        $('#predefined').change(function() {
+            // Get the selected value
+            var selectedStatement = $(this).val();
+            // Set the text input field with the selected value
+            $('#text').val(selectedStatement);
+        });
+
+        // Handle form submission
+        $('#sarcasmForm').submit(function(event) {
+            event.preventDefault(); // Prevent the form from submitting via the browser
+            $.ajax({
+                type: 'POST',
+                url: '/check_sarcasm',
+                data: $(this).serialize(),
+                success: function(response) {
+                    $('#message').text(response.message + " (Confidence: " + response.confidence + ")");
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
+
+
